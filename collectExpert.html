@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <title></title>
+    <link rel="stylesheet" href="css/collectExpert.css">
+    <link rel="stylesheet" href="./js/dialog-h/dialog.css">
+</head>
+<body>
+<!-- top-bg -->
+<img class='cl-bg' src='./images/courBgTop33.png'>
+<div class='historyLive'>
+   <!-- <div class='title'>视频列表</div>-->
+    <div class='hisWrap'>
+
+    </div>
+</div>
+</body>
+</html>
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/tool.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script src="./js/dialog-h/dialog.js"></script>
+<script type="text/javascript">
+    //url参数地址
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return (false);
+    }
+    var _userId = getQueryVariable('userId')?getQueryVariable('userId'):""
+    var token = getQueryVariable('token')?getQueryVariable('token'):""
+    var isMember = getQueryVariable('isMember')?getQueryVariable('isMember'):""
+
+    //初始视频列表
+    $.ajax({
+        url:`https://api.hbwlife.com/wxapp/user/expert/favorite/list?userId=${_userId}&token=${token}`,
+        type:"POST",
+        dataType: 'json',
+        data: JSON.stringify({
+            userId: _userId,
+            count: 100
+        }),
+        success:function (data) {
+            console.log(data)
+            var _data = data.data.experts
+            var _html=""
+            if(_data.length ==0) {
+                _html+=`<div class="noData"><img src="./images/noData.png" alt=""><div class="noDataTxt">~暂无收藏的专家~</div></div>`
+                $(".historyLive").append(_html)
+            }else{
+                $.each(_data,function (index,item) {
+                    _html+=`
+                   <div class='hisItem goCourseDetail' expert_id="${item.expert_id}">
+                        <img class="avatar" src="${item.avatar_url? item.avatar_url : "https://images.hbwlife.com/staticImg/defaultImg.png"}"/>
+                        <div class='wrap-r'>
+                            <div class="item-title">${item.name}</div>
+                            <div class='home-time'>${item.created_time}</div>
+                            <div class='home-desc'>${item.desc}</div>
+                        </div>
+                        <img id="collection" class='collection courseCollect' src='https://images.hbwlife.com/staticImg/collection2.png' course_id="${item.course_id}" expert_id="${item.expert_id}" course_price="${item.price_once}">
+                    </div>`
+                });
+                $(".hisWrap").append(_html)
+            }
+        }
+    });
+
+
+    //点击列表,跳转
+    $(".hisWrap").on("click",'.goCourseDetail',function(e){
+        var expertId = $(this).attr("expert_id")
+        console.log(expertId)
+        window.location.href="https://images.hbwlife.com/wx-h5/expertCourse.html?expertId="+expertId
+
+    })
+
+    //点击取消收藏
+    $(".hisWrap").on("click",'.collection',function(e){
+        console.log(1)
+        var expertId = $(this).attr("expert_id")
+        var courseId = $(this).attr("course_id")
+        var coursePrice = $(this).attr("course_price")
+        console.log(expertId)
+        /*----------------此时把，判断isMember先屏蔽掉，因为线上版的小程序没有带过来这个，上线的时候带上--------------*/
+        // if(isMember=="true"){
+        //     if($(this).hasClass("courseCollect")){
+        //         $(this).attr("src","https://images.hbwlife.com/staticImg/collection1.png")
+        //         deleteCollection(expertId,courseId,coursePrice,this)
+        //         $(this).removeClass("courseCollect");
+        //     }
+        // }else{
+        //     layer.confirm('您还没有登录呢~', {
+        //         btn: ['前往登录','残忍拒绝'] //按钮
+        //     }, function(){
+        //         const _url = `/pages/my/my`;
+        //         wx.miniProgram.navigateTo({
+        //             url:_url,
+        //             success: function(){},
+        //             fail: function(){console.log('fail')}
+        //         });
+        //         //layer.msg('的确很重要', {icon: 1});
+        //     }, function(){
+        //         layer.msg('不登录是不能参加活动的哦~', {
+        //             time: 20000, //20s后自动关闭
+        //             btn: ['明白了', '知道了']
+        //         });
+        //     });
+        // }
+        if($(this).hasClass("courseCollect")){
+            $(this).attr("src","https://images.hbwlife.com/staticImg/collection1.png")
+            deleteCollection(expertId)
+            $(this).removeClass("courseCollect");
+        }
+        e.stopPropagation();
+    });
+    //取消收藏
+    function deleteCollection(expertId) {
+        $.ajax({
+            url:`https://api.hbwlife.com/wxapp/user/expert/favorite/delete?userId=${_userId}&token=${token}`,
+            type:"POST",
+            dataType: 'json',
+            data: JSON.stringify({
+                userId: _userId,
+                expert_id: expertId
+            }),
+            success:function (data) {
+                if(data.code ==0){
+                    $.showMsg({msg:'取消收藏成功',time:2000});
+                }
+
+            }
+        });
+    }
+</script>
+
+
+

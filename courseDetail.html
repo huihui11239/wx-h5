@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <title>详情</title>
+    <link rel="stylesheet" href="./css/courseDetail.css">
+</head>
+<body>
+<!--top-->
+<div class="cd-container">
+    <div class='title'>
+        <span onclick="goBack()"><</span>
+        课程详情
+    </div>
+    <div class='cd-wrap'>
+        <video src="" id="player" controls></video>
+    </div>
+
+
+    <div class='cd-liveWrap'>
+        <!--<div><span class='cdSpanPrice'>29</span>元</div>-->
+        <div class='cd-liveTxt'>直播时间</div>
+        <div class='cd-liveTime'>2019-05-10</div>
+    </div>
+
+    <div class='cd-liveWrap cd-table'>
+        <div class='cd-liveTxtR' id='cd-liveTxt'>重播计划</div>
+        <div class='cd-arrowWrap' data-id='' onclick='changeRestartHeight()'>
+            <image src='./images/arrow-down.png' class='cd-arrowDown' id='arrow'></image>
+        </div>
+        <div class='cd-noPlan' id="noPlan">暂未有播出计划</div>
+    </div>
+</div>
+<!--bottom-->
+<div class='cd-liveTab'>
+    <div class='cd-tabHeader'>
+        <div class="cd-tabItem cd-tabHover" onclick='cdTabHeader(this)' data-item='0'>专家介绍</div>
+        <div class="cd-tabItem" onclick='cdTabHeader(this)' data-item='1'>课程介绍</div>
+    </div>
+    <div class='cd-tabLine' id="cd-tabLine"></div>
+
+    <div class='cd-tabContent' id='cd-tabContent' >
+        <!-- 专家介绍 -->
+        <div class='cd-tabExpirse' id='cd-tabExpirse'>
+            <div class="cd-tabExpertItem">
+                <div class="cd-tabExpressImg"><img src='./images/touxiang1.png'></div>
+                <div class="cd-tabExpressTxt">
+                    <div class="cd-tabExpressName">于魁智</div>
+                    <div class="cd-tabExpressExplain">1978年于魁智考入中国戏曲学院表演系，毕业后分到中国京剧院。 1982年毕业后进入中国京剧院工作至今。 2001年至2010年，任国家京剧院一团团长。2010年3月起，任国家京剧院副院长、艺术指导。 1978年9月于魁智以优异成绩成为中国戏曲学院。 1982年以各门功课全优成绩毕业，并同时被中国京剧院一团选入。 2004年01月21日，参加央视春晚，表演曲目《红色娘子军》 2005年1月10日[4] ，于魁智、李胜素在北京举办《于魁智老生唱腔专辑》 2005年，于魁智任重新组建的中国国家京剧院一团团长 2006年至2015年每年参加央视春晚 2015年7月，当选第八届中国剧协副主席 2016年12月，当选中国文学艺术界联合会第十届全委会委员 多年来，于魁智和李胜素老师他们足迹遍及祖国大江南北，数次率团赴港澳台地区演出，并多次出访亚洲、非洲、欧洲、美洲等国家，赢得海内外广大观众的热情赞誉，为传播中华文化做出了积极贡献。 当代著名京剧表演艺术家，中国国家京剧院一团团长，国家一级演员，毕业于中国京剧优秀青年演员研究生班，享受国务院颁发的政府特殊津贴。</div>
+                </div>
+            </div>
+        </div>
+        <!-- 课程介绍 -->
+        <div class='cd-tabCourse' id='cd-tabCourse'>
+            <div class='courseName'>浅谈京剧</div>
+            <div class='courseDesc'>于魁智老师说： 京剧是小众艺术。现在我们要让它走向大众化。”知名京剧表演艺术家、中国国家京剧院副院长于魁智于魁智说，京剧载歌载舞、唱念坐打，且经典剧目大多展现的是传统美德，在讲述中国故事上，京剧拥有独特优势，“流行的不一定是流传的，而京剧是要流传的。” 各种流派之大成，囊括现代戏和传统折子戏，无论是喜欢现代戏还是传统戏的戏迷都能找到自己喜欢的唱段和剧目。 李胜素老师说： 作为戏剧表演艺术工作者，自己期待有更多年轻观众走进剧场欣赏京剧。她也希望海外侨胞能带着更多外国朋友来看京剧，让西方主流社会增加对中国传统艺术的认知。 于魁智和李胜素是京剧界的黄金搭档，互相成就，默契非常。</div>
+        </div>
+    </div>
+</div>
+<!-- 支付按钮 -->
+<div class='paywrap'>
+    <!-- <button class='payBtn' bindtap='pay' style='display:{{payDisplay}}'>立即支付</button> -->
+    <button class='payBtn' onclick='goPayH5'>立即支付</button>
+</div>
+</body>
+</html>
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script>
+	function changeRestartHeight(){
+		$("#arrow").toggleClass('rotate')
+		$("#noPlan").toggle()
+	}
+	function cdTabHeader(that){
+		$(that).addClass('cd-tabHover').siblings().removeClass('cd-tabHover');
+		var index=$(that).index()
+		if(index==1){
+			$("#cd-tabLine").css({transform:'translate3d(100%,0,0)'})
+			$("#cd-tabContent").css({transform:'translate3d(-50%,0,0)',paddingTop:'0px',height:$("#cd-tabCourse").height()+50+'px'})
+		}
+		else{
+			$("#cd-tabLine").css({transform:'translate3d(0,0,0)'})
+			$("#cd-tabContent").css({transform:'translate3d(0,0,0)',paddingTop:'20px',height:$("#cd-tabExpirse").height()+50+'px'})
+		}
+		
+	}
+	function goBack() {
+        window.history.back();
+    }
+</script>

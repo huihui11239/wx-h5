@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频列表</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="stylesheet" href="css/courseList-public.css">
+</head>
+<body>
+<!-- top-bg -->
+<img class='cl-bg' src='./images/courBgTop33.png'>
+<div class='historyLive'>
+    <div class='hisWrap'>
+
+    </div>
+</div>
+</body>
+</html>
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/tool.js"></script>
+<script src="./js/layer/layer.js"></script>
+<script type="text/javascript">
+    //初始视频列表
+    $.ajax({
+        url:"https://api.hbwlife.com/wxapp/common/course/list",
+        type:"POST",
+        dataType: 'json',
+        success:function (data) {
+            console.log(data)
+            var _data = data.data.courses
+            var _html=""
+            if(_data.length ==0) {
+                _html+=`<div class="noDataTxt">~~暂无视频~~</div>`
+                $(".historyLive").append(_html)
+            }else{
+                $.each(_data,function (index,item) {
+
+                    _html+=`
+                       <div class='hisItem' id='goCourseDetail' course_id="${item.course_id}" expert_id="${item.expert_id}" course_price="${item.price_once}" course_time="${item.created_time}">
+                            <img class="course-url" src="${item.logo_url_300? item.logo_url_300 : "https://images.hbwlife.com/staticImg/defaultImg.png"}"/>
+                            <div class='wrap-r'>
+                                <div class="item-title">${item.name}</div>
+                                <div class='home-time'>${item.created_time}</div>
+                                <div class='home-desc'>${item.desc}</div>
+                            </div>
+
+                        </div>`
+                });
+
+                $(".hisWrap").append(_html)
+            }
+        }
+    });
+
+
+</script>
+

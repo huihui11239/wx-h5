@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <title>课程反馈</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="./js/dialog-h/dialog.css">
+</head>
+<style>
+    .feedBack{
+        width:100%;
+        height:100%;
+    }
+    .back-btn{
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+        width: 1.2rem;
+        height: 0.5rem;
+        line-height: 0.55rem;
+        background: #e2e2e2;
+        border-radius: 0 0.2rem 0.2rem 0;
+        color: #676a6d;
+        font-size: 0.28rem;
+        text-align: center;
+        opacity: .8;
+    }
+   .feedBack .title{
+       width:100%;
+       height:1rem;
+       line-height: 1rem;
+       text-align: center;
+       font-size: 0.36rem;
+       color: #676a6d;
+   }
+    .feedBack .msg-wrap{
+        width: 100%;
+        padding: 0 0.2rem;
+        box-sizing: border-box;
+    }
+    .feedBack .msg-wrap textarea{
+        display: block;
+        width: 100%;
+        height: 6rem;
+        padding: 8px 5px 0 10px;
+        border-radius: 0.15rem;
+        background: #fcfcfc;
+        border: 1px solid #eaeaea;
+        color: #676a6d;
+        font-size: 0.3rem;
+        box-sizing: border-box;
+        text-indent: 2em;
+        line-height: 0.5rem;
+    }
+    .submit-btn{
+        position: fixed;
+        left: 20%;
+        bottom: 0.3rem;
+        font-size: 0.34rem;
+        outline: none;
+        border: none;
+        color: white;
+        width: 60%;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        border-radius: 0.15rem;
+        cursor: pointer;
+        background: linear-gradient(#52c765,#63ca80);
+        text-shadow: 0 2px 2px grey;
+        box-shadow: 0 0.2em 0 #51a06a, 0 0.2em 0.2em #8dc1c1;
+        margin: 0 auto;
+    }
+    .submit-btn:active{
+        box-shadow: 0 0.1em 0 #068494, 0 0.1em 0.1em grey;
+        transform: translate(0, 0.1em);
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #c2c2c2;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+        color: #c2c2c2;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+        color: #c2c2c2;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+        color: #c2c2c2;
+    }
+
+</style>
+<body>
+<div class="feedBack">
+    <!--<div class="back-btn"><  返回</div>-->
+    <div class="title">意见反馈</div>
+    <div class="msg-wrap">
+        <textarea name="" placeholder="欢迎您提出宝贵意见，请留下需求、联系方式，我们会尽快回复您~" onfocus="this.placeholder=''" onblur="this.placeholder='欢迎您提出宝贵意见，如需咨询专家，请留下需求、联系方式，我们会尽快回复您~'"></textarea>
+    </div>
+    <button class="submit-btn">提交留言</button>
+</div>
+</body>
+</html>
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/tool.js"></script>
+<script src="./js/dialog-h/dialog.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript">
+    //url参数地址
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return (false);
+    }
+    var _userId = getQueryVariable('userId')?getQueryVariable('userId'):"";
+    var token = getQueryVariable('token')?getQueryVariable('token'):"";
+    var isMember = getQueryVariable('isMember')?getQueryVariable('isMember'):"";
+    var courseId = getQueryVariable('courseId')?getQueryVariable('courseId'):"";
+    var expertId = getQueryVariable('expertId')?getQueryVariable('expertId'):"";
+    console.log(_userId,token,isMember,expertId,courseId);
+
+    var comment = "";
+    $("textarea").on("change",function () {
+        comment = $("textarea").val();
+        console.log(comment)
+    })
+
+    $(".submit-btn").click(function () {
+        if(comment!=""){
+            $.ajax({
+                url:`https://api.hbwlife.com/wxapp/user/comment/set?userId=${_userId}&token=${token}`,
+                type:"POST",
+                dataType: 'json',
+                data: JSON.stringify({
+                    userId: _userId,
+                    comment_to: "COURSE",
+                    to_user_name:courseId,
+                    comment:comment
+                }),
+                success:function (data) {
+                    console.log(data)
+                    $.showMsg({msg:'提交成功',time:3000});
+                }
+            })
+        }else{
+            $.showMsg({msg:'请输入要反馈的信息',time:3000});
+        }
+
+    })
+
+    $(".back-btn").click(function () {
+        window.history.go(-1)
+    })
+
+
+
+</script>

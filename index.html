@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <title>h5-live</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+<!--<div class="total-title">直播首页</div>-->
+<!--banner-->
+<div class="swiper-container" id="banner">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide img"  onclick="hisGoCourse()"><img src="./images/banner1.jpg"/></div>
+        <div class="swiper-slide img" onclick="hisGoCourse()"><img src="./images/banner2.jpg"/></div>
+        <div class="swiper-slide img" onclick="hisGoCourse()"><img src="./images/banner3.jpg"/></div>
+        <div class="swiper-slide img" onclick="hisGoCourse()"><img src="./images/banner4.jpg"/></div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<!-- 当前直播 -->
+<div class='curLive'>
+    <div class='title'>当前直播</div>
+    <img class='curIcon' src='./images/icon1.png'>
+        <div class="curWrap swiper-container" id="curLive">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide img" onclick="hisGoCourse()"><img src="./images/4.jpg"/><div class="curIcon">浅谈京剧</div></div>
+                <div class="swiper-slide img" onclick="hisGoCourse()"><img src="./images/5.jpg"/><div class="curIcon">浅谈京剧</div></div>
+                <div class="swiper-slide img" onclick="hisGoCourse()"><img src="./images/6.jpg"/><div class="curIcon">浅谈京剧</div></div>
+                <div class="swiper-slide img" onclick="hisGoCourse()"><img src="./images/7.jpg"/><div class="curIcon">浅谈京剧</div></div>
+            </div>
+        </div>
+</div>
+<!-- 历史回放 -->
+<div class='historyLive'>
+    <div class='title'>历史回放</div>
+    <img class="hisIcon" src='./images/icon2.png'>
+    <div class='hisWrap'>
+        <div class='hisItem' onclick="hisGoCourse()" data-id="">
+            <img src="./images/touxiang1.png" data-id="" data-expertId=""/>
+            <div class='wrap-r'>
+                <div class="item-title">浅谈京剧</div>
+                <div class='home-time'>2019-05-10</div>
+                <div class='home-desc'>于魁智老师说：京剧是小众艺术。现在我们要让它走向大众化。”知名京剧表演艺术家、中国国家京剧院副院长于魁智于魁智说，京剧载歌载舞、唱念坐打，且经典剧目大多展现的是传统美德，在讲述中国故事上，京剧拥有独特优势，“流行的不一定是流传的，而京剧是要流传的。”
+                    各种流派之大成，囊括现代戏和传统折子戏，无论是喜欢现代戏还是传统戏的戏迷都能找到自己喜欢的唱段和剧目。
+                 </div>
+            </div>
+        </div>
+        <div class='hisItem' onclick="hisGoCourse()()" data-id="course1">
+            <img src="./images/1.jpg" data-id="" data-expertId=""/>
+            <div class='wrap-r'>
+                <div class="item-title">浅谈京剧（第二季）</div>
+                <div class='home-time'>2019-05-10</div>
+                <div class='home-desc'>李胜素老师说：戏剧表演艺术工作者，自己期待有更多年轻观众走进剧场欣赏京剧。她也希望海外侨胞能带着更多外国朋友来看京剧，让西方主流社会增加对中国传统艺术的认知。
+                    于魁智和李胜素是京剧界的黄金搭档，互相成就，默契非常。
+                </div>
+            </div>
+        </div>
+        <div class='hisItem' onclick="hisGoCourse()" data-id="course2">
+            <img src="./images/4.jpg" data-id="" data-expertId=""/>
+            <div class='wrap-r'>
+                <div class="item-title">女人40魅力四射</div>
+                <div class='home-time'>2019-05-10</div>
+                <div class='home-desc'>内容介绍：本书为中年女性献上一杯暖心益智的“心灵鸡汤”。一书在手，细细品味，定能获益匪浅。她对金秋年华的讴歌，如星星之火，会点燃您青春的余烬，令其再现炫目的光辉！她对女性功绩的颂扬，如声声晨笛，会拨动您低沉的心曲，令其再现高亢的强音！她对婚姻的建议，如航标灯光，会指引您绕过潜伏的礁石，驾驶着婚姻之舟游览绿水青山！她对家务指点迷津，如黑夜烛光，带领您寻找一个理想的支点，平衡事业与家庭两副重担！她对您身心美丽的关切，如闺房挚友，娓娓细语，提醒您该如何美颜、塑身、益智、强体……人生40方开始，因为还有40年的美好人生在等待着您！愿您携带着美丽、智慧、快乐、健康，走到幸福人生的终极！本书的作者都已过不惑之年，对于女性深切的苦衷和缠绕的心结颇为关注，为此奉献千言万语，其中有各路专家的致理之方，有幸福者的至情之言，也有不幸者的至诚之言。
+                </div>
+            </div>
+        </div>
+        <div class='hisItem' onclick="hisGoCourse()" data-id="course3">
+            <img src="./images/5.jpg" data-id="" data-expertId=""/>
+            <div class='wrap-r'>
+                <div class="item-title">套肠外瘘的治疗原则和方法</div>
+                <div class='home-time'>2019-05-10</div>
+                <div class='home-desc'>他是中国肠瘘治疗先行者。60年代创造性提出一整套肠外瘘的治疗原则和方法 ；70年代提出“设法使瘘自行愈合，手术是最后的治疗选择”的新见解，这一创新的治疗理论使国内外医学界对肠瘘 的认识发生了根本性的改变。80年代研究了一套适合我国国情的控制腹腔感染、处理瘘口、营养支持、 手术技巧等完整的治疗方法，解决了带血蒂管肠浆肌层片修补复杂肠瘘手术的难题，创造了运用腹腔灌 洗引流控制腹腔内感染的方法，大大提高了肠瘘的自愈率并缩短了疗程。迄今为止，他所领导的研究所 接收的960例肠瘘病人，治愈率高达92.6%；625例手术的成功率为99.1%，在国际上居领先地位。"
+                </div>
+            </div>
+        </div>
+        <div class='hisItem' onclick="hisGoCourse()" data-id="course4">
+            <img src="./images/6.jpg" data-id="" data-expertId=""/>
+            <div class='wrap-r'>
+                <div class="item-title">浅谈京剧</div>
+                <div class='home-time'>2019-05-10</div>
+                <div class='home-desc'>李胜素老师说：戏剧表演艺术工作者，自己期待有更多年轻观众走进剧场欣赏京剧。她也希望海外侨胞能带着更多外国朋友来看京剧，让西方主流社会增加对中国传统艺术的认知。
+                    于魁智和李胜素是京剧界的黄金搭档，互相成就，默契非常。
+                </div>
+            </div>
+        </div>
+        <div class='hisItem' onclick="hisGoCourse()" data-id="course5">
+            <img src="./images/1.jpg" data-id="" data-expertId=""/>
+            <div class='wrap-r'>
+                <div class="item-title">女人40魅力四射</div>
+                <div class='home-time'>2019-05-10</div>
+                <div class='home-desc'>内容介绍：本书为中年女性献上一杯暖心益智的“心灵鸡汤”。一书在手，细细品味，定能获益匪浅。她对金秋年华的讴歌，如星星之火，会点燃您青春的余烬，令其再现炫目的光辉！她对女性功绩的颂扬，如声声晨笛，会拨动您低沉的心曲，令其再现高亢的强音！她对婚姻的建议，如航标灯光，会指引您绕过潜伏的礁石，驾驶着婚姻之舟游览绿水青山！她对家务指点迷津，如黑夜烛光，带领您寻找一个理想的支点，平衡事业与家庭两副重担！她对您身心美丽的关切，如闺房挚友，娓娓细语，提醒您该如何美颜、塑身、益智、强体……人生40方开始，因为还有40年的美好人生在等待着您！愿您携带着美丽、智慧、快乐、健康，走到幸福人生的终极！本书的作者都已过不惑之年，对于女性深切的苦衷和缠绕的心结颇为关注，为此奉献千言万语，其中有各路专家的致理之方，有幸福者的至情之言，也有不幸者的至诚之言。
+                </div>
+            </div>
+        </div>
+        <div class='hisItem' onclick="hisGoCourse()" data-id="course6">
+            <img src="./images/7.jpg" data-id="" data-expertId=""/>
+            <div class='wrap-r'>
+                <div class="item-title">浅谈京剧</div>
+                <div class='home-time'>2019-05-10</div>
+                <div class='home-desc'>李胜素老师说：戏剧表演艺术工作者，自己期待有更多年轻观众走进剧场欣赏京剧。她也希望海外侨胞能带着更多外国朋友来看京剧，让西方主流社会增加对中国传统艺术的认知。
+                    于魁智和李胜素是京剧界的黄金搭档，互相成就，默契非常。
+                </div>
+            </div>
+        </div>
+        <div class='hisItem' onclick="hisGoCourse()" data-id="course7">
+            <img src="./images/9.jpg" data-id="" data-expertId=""/>
+            <div class='wrap-r'>
+                <div class="item-title">浅谈京剧</div>
+                <div class='home-time'>2019-05-10</div>
+                <div class='home-desc'>李胜素老师说：戏剧表演艺术工作者，自己期待有更多年轻观众走进剧场欣赏京剧。她也希望海外侨胞能带着更多外国朋友来看京剧，让西方主流社会增加对中国传统艺术的认知。
+                    于魁智和李胜素是京剧界的黄金搭档，互相成就，默契非常。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/tool.js"></script>
+<script src="./js/swiper.min.js"></script>
+<script src="./js/index.js"></script>
+<script type="text/javascript">
+    var Swiper1 = new Swiper('#banner',{
+        loop: true,
+        autoplay: 2000,
+        pagination: '.swiper-pagination'
+    });
+    var Swiper12 = new Swiper('#curLive',{
+        loop: true,
+        slidesPerView :3,
+        spaceBetween : 20,
+        autoplay: 2000
+    });
+    function hisGoCourse() {
+        window.location.href="http://www.hbwlife.com/item.html"
+    }
+</script>

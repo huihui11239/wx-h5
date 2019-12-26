@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>帮助中心</title>
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="stylesheet" href="./js/slide/css/reset.css">
+    <link rel="stylesheet" href="./js/slide/css/slider.css">
+    <link rel="stylesheet" href="./js/slide/css/slider.default.css">
+    <script src="./js/tool.js"></script>
+    <script type="text/javascript" src="./js/slide/js/zepto.js"></script>
+    <script type="text/javascript" src="./js/slide/js/touch.js"></script>
+    <script type="text/javascript" src="./js/slide/js/zepto.extend.js"></script>
+    <script type="text/javascript" src="./js/slide/js/zepto.ui.js"></script>
+    <script type="text/javascript" src="./js/slide/js/slider.js"></script>
+</head>
+<style>
+    html,body {overflow-x: hidden;overflow-y:scroll;height:100%;background: #f5f5f5;}
+    * {margin: 0;padding: 0;box-sizing: border-box;}
+    ul li{list-style: none;}
+    a,a:hover{text-decoration: none;cursor: pointer;}
+    .com-wrap{background: #fff;width:100%;height:auto;}
+    .com-wrap ul li{width:100%;height:auto;border-bottom: 1px solid #eee;font-size: 0.3rem;}
+    .com-wrap ul li .comment-title{width:100%;height:auto;padding: 0.25rem 0.2rem;color: #62aff9;}
+    .com-wrap .com-bot{display: none;background: #f5f5f5;transition: all .6s linear}
+    .com-wrap ul li .com-ans{width:100%;height:auto;padding: 0.15rem 0.2rem;color: #676a6d;}
+    .com-wrap .com-pic{width:100%;height:auto;overflow: hidden;}
+    .com-wrap .com-pic ul{width:100%;height:100%;overflow: hidden;padding: 0.2rem;}
+    .com-wrap .com-pic ul li{width:22.6%;height:1.5rem;margin-right: 3%;border: 1px solid #dde8e8;float: left;}
+    .com-wrap .com-pic ul li:nth-child(4n){margin-right: 0;}
+    .com-wrap .com-pic ul li img{width:100%;height:100%;padding: 0.06rem;}
+</style>
+<body>
+<div class="bg">
+    <ul id="slider"></ul>
+</div>
+<div class="com-wrap">
+    <ul class="firstUl">
+        <li>
+            <div class="comment-title">1、什么叫做邦邦码？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：邦邦码为汉邦智慧独有的代付充值码，当充值的时候，输入好友告知的邦邦码，可以为他人代充。当不输入的时候，即为自己账户充值。</div>
+                <div class="com-pic">
+                    <ul class="uls">
+                        <li><img src="./images/help/faq3.png" alt=""></li>
+                        <li><img src="./images/help/faq1.png" alt=""></li>
+                        <li><img src="./images/help/faq4.png" alt=""></li>
+                        <li><img src="./images/help/faq5.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="comment-title">2、如何为他人代付？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：进入【我的】页面，点击【我的金币】，进入充值页面，选择要充值的金额，并输入好友告知的6位邦邦码，即可代为充值（邦邦码失效期5分钟）。</div>
+                <div class="com-pic">
+                    <ul class="uls">
+                        <li><img src="./images/help/faq2.png" alt=""></li>
+                        <li><img src="./images/help/faq3.png" alt=""></li>
+                        <li><img src="./images/help/faq4.png" alt=""></li>
+                        <li><img src="./images/help/faq5.png" alt=""></li>
+                        <li><img src="./images/help/faq1.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="comment-title">3、ios系统如何充值？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：ios系统由于平台相关规范，无法为虚拟商品充值。因此可以让安卓用户代为充值。具体操作如下：在提交订单页面，点击【补充金币】，将弹窗中的6位邦邦码，告知好
+                    友，邀请好友进入【我的】页面，点击【我的金币】，进入充值页面，选择要充值的金额，并输入刚才的6位邦邦码，即可代为充值（邦邦码失效期5分钟）。</div>
+                <div class="com-pic">
+                    <ul class="uls">
+                        <li><img src="./images/help/faq1.png" alt=""></li>
+                        <li><img src="./images/help/faq2.png" alt=""></li>
+                        <li><img src="./images/help/faq3.png" alt=""></li>
+                        <li><img src="./images/help/faq4.png" alt=""></li>
+                        <li><img src="./images/help/faq5.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="comment-title">4、邦邦码失效期为多久？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：5分钟。</div>
+                <div class="com-pic">
+                    <ul class="uls">
+                        <li><img src="./images/help/faq1.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="comment-title">5、视频什么时候开始倒计时？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：距离视频开始2分钟开始倒计时</div>
+                <div class="com-pic">
+                    <ul class="uls">
+                        <li><img src="./images/help/faq7.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="comment-title">6、如何查看正在播放的视频？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：浏览并购买视频，当视频有播放计划的时候，即可观看</div>
+                <div class="com-pic">
+                    <ul class="uls">
+                        <li><img src="./images/help/faq13.png" alt=""></li>
+                        <li><img src="./images/help/faq14.png" alt=""></li>
+                        <li><img src="./images/help/faq15.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="comment-title">7、购买该视频后，以后再安排重播，可以观看吗？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：一经购买，后期重播是不需要再交费的</div>
+                <!--<div class="com-pic">-->
+                    <!--<ul class="uls">-->
+                        <!--<li><img src="./images/help/faq0.png" alt=""></li>-->
+                        <!--<li><img src="./images/help/faq4.png" alt=""></li>-->
+                        <!--<li><img src="./images/help/faq1.png" alt=""></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            </div>
+        </li>
+        <li>
+            <div class="comment-title">8、如何收藏视频、收藏专家？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：在播放列表页、专家列表页，点击右上角的五角星图标，即可收藏您喜欢的视频、专家</div>
+                <div class="com-pic">
+                    <ul class="uls">
+                        <li><img src="./images/help/faq8.png" alt=""></li>
+                        <li><img src="./images/help/faq9.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="comment-title">9、如果查看已收藏的视频、专家？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：在【我的】页面，点击【收藏的视频】、【收藏的专家】即可查看已经收藏过的，在本页面也可以取消收藏。</div>
+                <div class="com-pic">
+                    <ul class="uls">
+                        <li><img src="./images/help/faq2.png" alt=""></li>
+                        <li><img src="./images/help/faq10.png" alt=""></li>
+                        <li><img src="./images/help/faq11.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="comment-title">10、如何查看已经购买的视频？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：在【我的】页面，点击【我的视频】，即可查看已经购买过的视频。</div>
+                <!--<div class="com-pic">
+                    <ul class="uls">
+                    </ul>
+                </div>-->
+            </div>
+        </li>
+        <li>
+            <div class="comment-title">11、如何查看重播时间？</div>
+            <div class="com-bot">
+                <div class="com-ans">答：在首页可以看到、在视频详情页，点击重播时间也可以看到。</div>
+                <div class="com-pic">
+                    <ul class="uls">
+                        <li><img src="./images/help/faq7.png" alt=""></li>
+                        <li><img src="./images/help/faq12.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
+<script>
+    var arrs=[];
+    $(".uls").on('click',function (e) {
+        arrs=[];
+        e.stopPropagation();
+        var doms=e.target;
+        if(doms.nodeName=='IMG'){
+            /*点击图片*/
+            var heights=window.innerHeight;
+            $('#slider').css('height',heights + 'px');
+            $('.bg').css({transform:'scale(1,1)'});
+            var uls=doms.parentNode.parentNode;
+            var childs=$(uls).children();
+            for(var i=0;i<childs.length;i++){
+                arrs.push({pic:$(childs[i]).find('img').attr('src')})
+            }
+            if(arrs.length>0){
+                var slider = $.ui.slider('#slider', {
+                    autoPlay:false,
+                    showArr:false,
+                    showDot:false,
+                    slide:false,
+                    viewNum:1,
+                    springBackDis:70,
+                    content:arrs,
+                });
+            }
+        }
+    })
+    function imgs(that){
+        console.log($(that).attr('data-target'))
+    }
+    $(".bg").on('click',function(e){
+        $(".bg").css({transform:'scale(0,0)'})
+    })
+</script>
+<!--<script src="js/jquery-3.2.1.min.js"></script>-->
+<script>
+    $(function () {
+        $(".firstUl li").eq(0).find(".com-bot").show();
+        /*点击标题展开*/
+        $(".comment-title").click(function () {
+            var heights=$(this).next(".com-bot").height()
+            if(heights>0){
+                $(this).next(".com-bot").css({display:"none"})
+            }else{
+                $(this).next(".com-bot").css({display:'block'})
+            }
+            // $(this).next(".com-bot").slideToggle();
+            $(this).parent().siblings().find(".com-bot").hide()
+        })
+
+    })
+</script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>WXInlinePlayer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<canvas id="container" width="800" height="450"></canvas>
+<script src="./index.js"></script>
+<script>
+    if (WXInlinePlayer.isSupport()) {
+        WXInlinePlayer.init({
+            asmUrl: './prod.baseline.asm.combine.js',
+            wasmUrl: './prod.baseline.wasm.combine.js'
+        });
+
+        WXInlinePlayer.ready().then(() => {
+            const player = new WXInlinePlayer({
+                url: 'https://static.petera.cn/mm.flv',
+                $container: document.getElementById('container'),
+                hasVideo: true,
+                hasAudio: true,
+                volume: 1.0,
+                muted: false,
+                autoplay: true,
+                loop: true,
+                isLive: false,
+                chunkSize: 128 * 1024,
+                preloadTime: 5e2,
+                bufferingTime: 1e3,
+                cacheSegmentCount: 64,
+                customLoader: null
+            });
+
+            const { userAgent } = navigator;
+            const isWeChat = /MicroMessenger/i.test(userAgent);
+            if (!isWeChat) {
+                alert('click to play!');
+                document.body.addEventListener('click', () => {
+                    player.play();
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>

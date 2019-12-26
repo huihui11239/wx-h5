@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div class='hisWrap'>
+    <div class='hisItem' id='goCourseDetail' course_id="${item.course_id}" course_time="${item.consume_time}" course_price="${item.consume_price}">
+        <img class="course-pic" src="${item.logo_url.length==0?'https://images.hbwlife.com/staticImg/defaultImg.png':item.logo_url_300}"/>
+        <div class='wrap-r'>
+            <span class="course-name">${item.name}</span>
+            <div class="home-time">
+                <span class='timeLi'>${item}</span>
+            </div>
+            <div class='home-desc'>${item.desc}</div>
+        </div>
+        <!-- 已购买，角标 -->
+        <img class="payed-txt" src="https://images.hbwlife.com/staticImg/payed.png">
+</div>
+
+
+</body>
+<style>
+
+</style>
+</html>
+<script>
+    var url = "http://aasafds.jpg"
+</script>

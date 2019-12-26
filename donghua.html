@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <title>css3给按钮添加背景渐变动画</title>
+
+    <style type="text/css">
+        button {
+            color: #FFF;
+            font-size: 16px;
+            outline: none;
+            width: 300px;
+            height: 48px;
+            background: #26A1D9;
+            border: none;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        button:active {
+            outline: none;
+            background: #208FC1;
+            /*执行动画*/
+            -webkit-animation: showBtn 0.5s 1;
+            animation: showBtn 0.5s 1;
+            /*停止在最后一帧*/
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+
+        /*定义动画*/
+        @-webkit-keyframes showBtn {
+            10% {
+                background: -webkit-radial-gradient(Circle, #1E7AA5 28%, #2287B7 30%, #2287B7 48%, #208FC1 60%);
+                background: radial-gradient(Circle, #1E7AA5 28%, #2287B7 30%, #2287B7 48%, #208FC1 60%);
+            }
+
+            20% {
+                background: -webkit-radial-gradient(Circle, #1E7AA5 32%, #2287B7 34%, #2287B7 52%, #208FC1 60%);
+                background: radial-gradient(Circle, #1E7AA5 32%, #2287B7 34%, #2287B7 52%, #208FC1 60%);
+            }
+
+            40% {
+                background: -webkit-radial-gradient(Circle, #1E7AA5 34%, #2287B7 36%, #2287B7 54%, #208FC1 60%);
+                background: radial-gradient(Circle, #1E7AA5 34%, #2287B7 36%, #2287B7 54%, #208FC1 60%);
+            }
+
+            60% {
+                background: -webkit-radial-gradient(Circle, #1E7AA5 36%, #2287B7 38%, #2287B7 56%, #208FC1 60%);
+                background: radial-gradient(Circle, #1E7AA5 36%, #2287B7 38%, #2287B7 56%, #208FC1 60%);
+            }
+
+            80% {
+                background: -webkit-radial-gradient(Circle, #1E7AA5 38%, #2287B7 40%, #2287B7 58%, #208FC1 60%);
+                background: radial-gradient(Circle, #1E7AA5 38%, #2287B7 40%, #2287B7 58%, #208FC1 60%);
+            }
+
+            100% {
+                background: -webkit-radial-gradient(Circle, #1E7AA5 40%, #2287B7 42%, #2287B7 60%, #208FC1 60%);
+                background: radial-gradient(Circle, #1E7AA5 40%, #2287B7 42%, #2287B7 60%, #208FC1 60%);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <button>按钮</button>
+
+</body>
+
+</html>
+<script>
+    console.log(111111)
+    if (a) {
+        alert(111)
+    }
+</script>

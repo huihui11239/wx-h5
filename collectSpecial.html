@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <title></title>
+    <link rel="stylesheet" href="css/collectSpecial.css">
+    <link rel="stylesheet" href="./js/dialog-h/dialog.css">
+</head>
+<body>
+<!-- top-bg -->
+<img class='cl-bg' src='./images/courBgTop33.png'>
+<div class='historyLive'>
+    <div class='hisWrap'>
+
+    </div>
+</div>
+</body>
+</html>
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/tool.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script src="./js/dialog-h/dialog.js"></script>
+<script type="text/javascript">
+    //url参数地址
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return (false);
+    }
+    var _userId = getQueryVariable('userId')?getQueryVariable('userId'):""
+    var token = getQueryVariable('token')?getQueryVariable('token'):""
+    var isMember = getQueryVariable('isMember')?getQueryVariable('isMember'):""
+
+
+    //初始视频列表  headers:{'AUTH_TOKEN':_userId+"|"+token},
+    $.ajax({
+        url:`https://api.hbwlife.com/wxapp/user/subject/favorite/list?userId=${_userId}&token=${token}`,
+        type:"POST",
+        dataType: 'json',
+        data: JSON.stringify({
+            userId: isMember=="true"?_userId:"",
+            count: 100
+        }),
+        success:function (data) {
+            console.log(data)
+            var _data = data.data.subjects
+            var _html=""
+            if(_data.length ==0) {
+                _html+=`<div class="noData"><img src="./images/noData.png" alt=""><div class="noDataTxt">~暂无收藏的专题~</div></div>`
+                $(".historyLive").append(_html)
+            }else{
+                $.each(_data,function (index,item) {
+                    _html+=`
+                   <div class='hisItem goCourseDetail' subject_id="${item.subject_id}" consume_price="${item.price_discounted}" expert_id="${item.expert_id}">
+                        <img class="course-url" src="${item.logo_url_300?item.logo_url_300:'https://images.hbwlife.com/staticImg/defaultImg.png'}"/>
+                        <div class='wrap-r'>
+                            <div class="item-title">${item.name}</div>
+                            <div class='home-time'>币 ${item.price_discounted}</div>
+                            <div class='home-desc'>${item.desc}</div>
+                        </div>
+                        <img id="collection" class='collection courseCollect' src='https://images.hbwlife.com/staticImg/collection2.png' subject_id="${item.subject_id}" consume_price="${item.price_discounted}" expert_id="${item.expert_id}">
+                    </div>`
+                });
+                $(".hisWrap").append(_html)
+            }
+        }
+    });
+
+    //回到专题详情页
+    $(".hisWrap").on("click",'.goCourseDetail',function(e){
+        var subject_id =  $(this).attr("subject_id")
+        var consume_price =  $(this).attr("consume_price")
+        var expert_id =  $(this).attr("expert_id")
+        console.log(subject_id,expert_id,consume_price)
+        //去专题的课程列表页
+        window.location.href=`https://images.hbwlife.com/wx-h5/specialDetail.html?subject_id=${subject_id}&userId=${_userId}&isMember=${isMember}&token=${token}`
+
+    })
+
+    //点击取消收藏
+    $(".hisWrap").on("click",'.collection',function(e){
+        console.log(1)
+        var expertId = $(this).attr("expert_id")
+        var subject_id = $(this).attr("subject_id")
+        var coursePrice = $(this).attr("course_price")
+        /*----------------此时把，判断isMember先屏蔽掉，因为线上版的小程序没有带过来这个，上线的时候带上--------------*/
+        // if(isMember=="true"){
+        //     if($(this).hasClass("courseCollect")){
+        //         $(this).attr("src","https://images.hbwlife.com/staticImg/collection1.png")
+        //         deleteCollection(expertId,courseId,coursePrice,this)
+        //         $(this).removeClass("courseCollect");
+        //     }
+        // }else{
+        //    layer.confirm('您还没有登录呢~', {
+        //         btn: ['前往登录','残忍拒绝'] //按钮
+        //     }, function(){
+        //         const _url = `/pages/my/my`;
+        //         wx.miniProgram.navigateTo({
+        //             url:_url,
+        //             success: function(){},
+        //             fail: function(){console.log('fail')}
+        //         });
+        //         //layer.msg('的确很重要', {icon: 1});
+        //     }, function(){
+        //         layer.msg('不登录是不能参加活动的哦~', {
+        //             time: 20000, //20s后自动关闭
+        //             btn: ['明白了', '知道了']
+        //         });
+        //     });
+        // }
+        if($(this).hasClass("courseCollect")){
+            console.log(11)
+            $(this).attr("src","https://images.hbwlife.com/staticImg/collection1.png")
+            deleteCollection(subject_id,expertId)
+            $(this).removeClass("courseCollect");
+        }
+
+        e.stopPropagation();
+    });
+    //取消收藏
+    function deleteCollection(subject_id,expertId) {
+        $.ajax({
+            url:`https://api.hbwlife.com/wxapp/user/subject/favorite/delete?userId=${_userId}&token=${token}`,
+            type:"POST",
+            dataType: 'json',
+            data: JSON.stringify({
+                userId: _userId,
+                subject_id: subject_id
+            }),
+            success:function (data) {
+                if(data.code ==0){
+                    $.showMsg({msg:'取消收藏成功!!',time:2000});
+                }
+            }
+        });
+    }
+
+
+</script>
+
+
+

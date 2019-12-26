@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>积分商城</title>
+    <style>
+        html,body {overflow-x: hidden;overflow-y: scroll;padding: 0;margin: 0; list-style:none;box-sizing:border-box;background:#fff;}
+        ul,li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .no-active{
+            font-size: 0.3rem;
+            color: #676a6d;
+            margin: 0 auto;
+            margin-top: 0.3rem;
+            text-align: center;
+        }
+        .wrap{
+            width: 7.5rem;
+            /*height: auto;*/
+            height:17.1rem;
+            overflow: hidden;
+            background: url("https://images.hbwlife.com/staticImg/integral-bg.png") no-repeat;
+            background-size: cover;
+        }
+        .sign-wrap{
+            margin: 0 auto;
+            margin-top: 4.8rem;
+            width:86.5%;
+            height:4.2rem;
+            border: 1px solid #fff;
+            border-radius: 0.15rem;
+            background: #FFFFFF;
+            position: relative;
+        }
+        .sign-wrap .money-icon{
+            width:1.1rem;
+            height:1.1rem;
+            position: absolute;
+            top: -0.6rem;
+            left: 0.33rem;
+        }
+        .sign-wrap .sign-wrap-title{
+            width: 100%;
+            height:1.3rem;
+            line-height: 1.3rem;
+            text-align: center;
+            font-size: 0.36rem;
+            font-weight: bold;
+            color: #515151;
+        }
+        .sign-wrap .sign-wrap-title .sign-num{
+             font-size: 0.40rem;
+             color: #ee5052;
+         }
+        .sign-wrap .day-wrap{
+            width:100%;
+            height:1.5rem;
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.26rem;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .sign-wrap .day-wrap .line{
+            position: absolute;
+            top: 0.88rem;
+            left: 0.4rem;
+            width: 86%;
+            height: 1px;
+            background: #c4c4c4;
+            color: #c4c4c4;
+        }
+        .sign-wrap .day-wrap li{
+            margin: 0 0.15rem;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
+        .day-wrap .day-txt{
+          width:0.64rem;
+          height:0.64rem;
+          line-height: 0.64rem;
+          text-align: center;
+          background: #ffe9cd;
+          color: #fea724;
+          font-size: 0.28rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        .day-wrap .day-txt img{
+            width:0.4rem;
+            height:0.38rem;
+        }
+        .day-wrap .day-icon{
+            margin-top: 0.1rem;
+            width:0.22rem;
+            height:0.22rem;
+        }
+        .day-icon img{
+            width:100%;
+            height:100%;
+        }
+        .day-wrap .day-time{
+            font-size: 0.26rem;
+            color: #c4c4c4;
+            height:0.54rem;
+            line-height: 0.54rem;
+        }
+        .sign-wrap .sign-btn{
+            width:2.51rem;
+            height:0.8rem;
+            margin: 0 auto;
+            /*margin-top: 0.2rem;*/
+
+        }
+        .sign-wrap .sign-btn img{
+            width:100%;
+            height:100%;
+        }
+        /*抽奖*/
+        .awardWrap{
+            margin-top: 0.67rem;
+            height: auto;
+            overflow: hidden;
+        }
+        .awardTitle{
+            margin: 0 auto;
+            width: 3.29rem;
+            height: 0.58rem;
+        }
+        .awardTitle img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .awardContent{
+            width: 6.47rem;
+            height: 4.43rem;
+            background-image: url(./images/awardRedBg.png);
+            background-size: cover;
+            margin: 0 auto;
+            margin-top: 0.78rem;
+            border-top: 1px solid rgba(0,0,0,0);
+            margin-bottom: 1.61rem;
+        }
+        .awardInner{
+            height: 100%;
+            overflow: hidden;
+            padding: 0.15rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .awardRow{
+            width: 6.1rem;
+            height: 1.3rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .awardItemAction{
+            background-color: white;
+            width: 1.93rem;
+            height: 1.29rem;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 1.29rem;
+            font-size: 20px;
+            color: #c4c4ab;
+        }
+        .awardItem{
+            background-color: white;
+            width: 1.93rem;
+            height: 1.29rem;
+            border-radius: 10px;
+
+        }
+        .awardAction{
+            background-color: #bbbbbb;
+            color: #fff;
+        }
+        .awardActive{
+            background-color: #ffc70b;
+            color: #fff;
+        }
+        .awardItem{
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .awardItem img{
+            width:0.5rem;
+            height:0.5rem;
+            margin-top: 0.1rem;
+        }
+        .awardItem .goal-num{
+            text-align: center;
+            font-size: 0.32rem;
+            color: #676a6d;
+            margin-top: 0.15rem;
+        }
+        .awardItem .sorry-txt{
+            text-align: center;
+            font-size: 0.3rem;
+            color: #676a6d;
+            margin-top: 0.15rem;
+        }
+        /*签到成功，弹窗*/
+        .sign-dialog{
+            display: none;
+            width:7.5rem;
+            height:100vh;
+            position: fixed;
+            top: 0;
+            left:0;
+        }
+        .sign-dialog img{
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <!--<div class="no-active">~~暂无活动，敬请期待哦~~</div>-->
+    <div class="sign-wrap">
+        <img class="money-icon" src="https://images.hbwlife.com/staticImg/money-icon.png" alt="">
+        <div class="sign-wrap-title">已连续签到<span class="sign-num">2</span>天</div>
+        <ul class="day-wrap">
+            <div class="line"></div>
+            <li class="every-day" data-num="1">
+                <div class="day-txt">1天</div>
+                <div class="day-icon"><img src="https://images.hbwlife.com/staticImg/day-icon.png" alt=""></div>
+                <div class="day-time">今天</div>
+            </li>
+            <li class="every-day" data-num="2">
+                <div class="day-txt">2天</div>
+                <div class="day-icon"><img src="https://images.hbwlife.com/staticImg/day-icon.png" alt=""></div>
+                <div class="day-time">今天</div>
+            </li>
+            <li class="every-day" data-num="3">
+                <div class="day-txt">3天</div>
+                <div class="day-icon"><img src="https://images.hbwlife.com/staticImg/day-icon.png" alt=""></div>
+                <div class="day-time">明天</div>
+            </li>
+            <li class="every-day" data-num="4">
+                <div class="day-txt">4天</div>
+                <div class="day-icon"><img src="https://images.hbwlife.com/staticImg/day-icon.png" alt=""></div>
+                <div class="day-time">12.1</div>
+            </li>
+            <li class="every-day" data-num="5">
+                <div class="day-txt">5天</div>
+                <div class="day-icon"><img src="https://images.hbwlife.com/staticImg/day-icon.png" alt=""></div>
+                <div class="day-time">12.2</div>
+            </li>
+            <li class="every-day" data-num="6">
+                <div class="day-txt">6天</div>
+                <div class="day-icon"><img src="https://images.hbwlife.com/staticImg/day-icon.png" alt=""></div>
+                <div class="day-time">12.3</div>
+            </li>
+            <li class="every-day" data-num="7">
+                <div class="day-txt"><img src="https://images.hbwlife.com/staticImg/last-day.png" alt=""></div>
+                <div class="day-icon"><img src="https://images.hbwlife.com/staticImg/day-icon.png" alt=""></div>
+                <div class="day-time">12.4</div>
+            </li>
+        </ul>
+        <div class="sign-btn"><img src="https://images.hbwlife.com/staticImg/sign-btn.png" alt=""></div>
+    </div>
+    <!--抽奖-->
+    <div class="awardWrap">
+        <!--抽奖标题-->
+        <div class="awardTitle">
+            <img src="images/awardTitle.png" />
+        </div>
+        <!--抽奖正文-->
+        <div class="awardContent" id="awardContent">
+            <div class="awardInner">
+                <!--每一行抽奖-->
+                <div class="awardRow">
+                    <div class="awardItem awardItem-0">
+                        <img src="https://images.hbwlife.com/staticImg/money-icon.png" alt="">
+                        <div class="goal-num">5金币</div>
+                    </div>
+                    <div class="awardItem awardItem-1">
+                        <img src="https://images.hbwlife.com/staticImg/money-icon.png" alt="">
+                        <div class="goal-num">10金币</div>
+                    </div>
+                    <div class="awardItem awardItem-2">
+                        <img src="https://images.hbwlife.com/staticImg/sorry-icon.png" alt="">
+                        <div class="sorry-txt">很遗憾~</div>
+                    </div>
+                </div>
+
+                <div class="awardRow">
+                    <div class="awardItem awardItem-7">
+                        <img src="https://images.hbwlife.com/staticImg/sorry-icon.png" alt="">
+                        <div class="sorry-txt">很遗憾~</div>
+                    </div>
+                    <div class="awardItemAction awardAction" id="awardAction">抽奖</div>
+                    <div class="awardItem awardItem-3">
+                        <img src="https://images.hbwlife.com/staticImg/money-icon.png" alt="">
+                        <div class="goal-num">15金币</div>
+                    </div>
+                </div>
+
+                <div class="awardRow">
+                    <div class="awardItem awardItem-6">
+                        <img src="https://images.hbwlife.com/staticImg/money-icon.png" alt="">
+                        <div class="goal-num">20金币</div>
+                    </div>
+                    <div class="awardItem awardItem-5">
+                        <img src="https://images.hbwlife.com/staticImg/sorry-icon.png" alt="">
+                        <div class="sorry-txt">很遗憾~</div>
+                    </div>
+                    <div class="awardItem awardItem-4">
+                        <img src="https://images.hbwlife.com/staticImg/money-icon.png" alt="">
+                        <div class="goal-num">25金币</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--签到成功，弹窗-->
+    <div class="sign-dialog">
+        <img src="https://images.hbwlife.com/staticImg/sign-dialog.png" alt="">
+    </div>
+</div>
+</body>
+</html>
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/tool.js"></script>
+<script>
+    $(".sign-btn").click(function () {
+        console.log(1111)
+        $(".sign-dialog").css({"display":"block"})
+        $(".sign-dialog").click(function () {
+            $(this).css({"display":"none"})
+        })
+
+     /*var lists = $(".every-day");
+     for (var j = 0; j < lists.length; j++) {
+         var index =  $('.list').eq(j).attr('dataIndex')
+         console.log($('.list'))
+         console.log($('.list').attr("data-num"))
+         if($('.list').attr("data-num") == 1){
+             console.log(222)
+             console.log($('.list').eq(j).attr("data-num"))
+             $('.list').eq(j).closest(".day-txt").css({"background":"#fea724"})
+             $('.list').eq(j).closest(".day-icon").find("img").attr("src","https://images.hbwlife.com/staticImg/day-icon-active.png")
+             $('.list').eq(j).closest(".day-time").css({"color":"#3a3a3a"})
+         }
+       }*/
+
+
+    })
+
+    /*抽奖*/
+    var lottery={
+        index:-1,    //当前转动到哪个位置，起点位置
+        count:0,    //总共有多少个位置
+        timer:0,    //setTimeout的ID，用clearTimeout清除
+        speed:20,    //初始转动速度
+        times:0,    //转动次数
+        cycle:50,    //转动基本次数：即至少需要转动多少次再进入抽奖环节
+        prize:-1,    //中奖位置
+        init:function(id){
+            if ($("#"+id).find(".awardItem").length>0) {
+                $lottery = $("#"+id);
+                $units = $lottery.find(".awardItem");
+                this.obj = $lottery;
+                this.count = $units.length;
+                $lottery.find(".awardItem-"+this.index).addClass("awardActive");
+            };
+        },
+        roll:function(){
+            var index = this.index;
+            var count = this.count;
+            var lottery = this.obj;
+            $(lottery).find(".awardItem-"+index).removeClass("awardActive");
+            index += 1;
+            if (index>count-1) {
+                index = 0;
+            };
+            $(lottery).find(".awardItem-"+index).addClass("awardActive");
+            this.index=index;
+            return false;
+        },
+        stop:function(index){
+            this.prize=index;
+            return false;
+        }
+    };
+    function roll(){
+        lottery.times += 1;
+        lottery.roll();
+        if (lottery.times > lottery.cycle+10 && lottery.prize==lottery.index) {
+            clearTimeout(lottery.timer);
+            lottery.prize=-1;
+            lottery.times=0;
+            click=false;
+            prize( $("#awardContent").find(".awardItem-"+lottery.index).text(),lottery.index)
+
+        }else{
+            if (lottery.times<lottery.cycle) {
+                lottery.speed -= 10;
+            }else if(lottery.times==lottery.cycle) {
+                var index = Math.random()*(lottery.count)|0;
+                lottery.prize = index;
+            }else{
+                if (lottery.times > lottery.cycle+6 && ((lottery.prize==0 && lottery.index==7) || lottery.prize==lottery.index+1)) {
+                    lottery.speed += 110;
+                }else{
+                    lottery.speed += 20;
+                }
+            }
+            if (lottery.speed<40) {
+                lottery.speed=40;
+            };
+            //console.log(lottery.times+'^^^^^^'+lottery.speed+'^^^^^^^'+lottery.prize);
+            lottery.timer = setTimeout(roll,lottery.speed);
+        }
+        return false;
+    }
+
+    //获取奖品
+    function prize(text,index){
+       //alert(text)
+    }
+
+
+    var click=false;
+    window.onload=function(){
+        lottery.init('awardContent');
+        $("#awardAction").click(function(){
+            if (click) {
+                return false;
+            }else{
+                lottery.speed=100;
+                roll();
+                click=true;
+                return false;
+            }
+        });
+    };
+
+</script>
+
+
+
+
+
